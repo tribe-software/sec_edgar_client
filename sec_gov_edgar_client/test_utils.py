@@ -9,7 +9,6 @@ from .central_index_key import CIKRepositoryInterface
 from .client import SECGovEDGARClient, UserAgent
 
 __all__ = (
-
     "Handler",
 
     "fake_sec_server_factory",
