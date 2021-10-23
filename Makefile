@@ -6,7 +6,7 @@ VENV := .venv
 REPORTS := .reports
 COVERAGE := $(REPORTS)/coverage
 
-SOURCES := $(PROJECT) examples/usage.py
+SOURCES := $(PROJECT)
 TESTS := tests
 
 PY_FILES := $(shell find $(SOURCES) $(TESTS) -name "*.py")

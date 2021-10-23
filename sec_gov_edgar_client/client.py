@@ -1,4 +1,4 @@
-from functools import cached_property
+from collections import UserString
 from typing import Optional
 
 import attr
@@ -15,15 +15,12 @@ __all__ = (
 )
 
 
-@attr.s(auto_attribs=True, frozen=True)
-class UserAgent:
-    company: str
-    user: str
-    email: str
+class UserAgent(UserString):
 
-    @cached_property
-    def view(self) -> str:
-        return f"{self.company} {self.user} <{self.email}>"
+    def __init__(self, company: str, user: str, email: str) -> None:
+        super().__init__(
+            f"{company} {user} <{email}>",
+        )
 
 
 @attr.s(auto_attribs=True, slots=True, frozen=True)
@@ -31,11 +28,7 @@ class SECGovEDGARClient:
     _session: ClientSession
     _url: URL
     _CIKs: CIKRepositoryInterface
-    _user_agent: UserAgent = UserAgent(
-        "Tribe.invest",
-        "Danila Korobkov",
-        "korobkov.danila.yurevich@gmail.com",
-    )
+    _user_agent: UserAgent
 
     async def get_reports(
         self,
@@ -60,5 +53,5 @@ class SECGovEDGARClient:
 
     def _get_headers(self) -> dict[str, str]:
         return {
-            "User-Agent": self._user_agent.view,
+            "User-Agent": str(self._user_agent),
         }

@@ -1,22 +1,19 @@
 # pylint: disable=no-self-use
 # pylint: disable=too-many-arguments
-# pylint: disable=too-many-statements
 
 from datetime import date
 from typing import Final
 from unittest import mock
 
 import pytest
-from aiohttp import ClientSession, web
-from yarl import URL
+from aiohttp import web
 
 from sec_gov_edgar_client import (
     BalanceSnapshot,
     CIKRepositoryInterface,
     Reports,
-    SECGovEDGARClient,
 )
-from sec_gov_edgar_client.test_utils import Handler, fake_sec_server_factory
+from sec_gov_edgar_client.test_utils import Handler, sec_client_factory
 
 from .example_data import (
     MNST_RESPONSE_DATA,
@@ -123,10 +120,8 @@ class TestSECGovEDGARClient:
 
         handler = mock.AsyncMock(wraps=_handler, spec=Handler)
 
-        async with ClientSession() as session:
-            async with fake_sec_server_factory(handler) as url:
-                client = SECGovEDGARClient(session, url, ciks)
-                reports = await client.get_reports(ticker)
+        async with sec_client_factory(ciks, handler) as sec:
+            reports = await sec.get_reports(ticker)
 
         assert reports == expected_reports
         handler.assert_awaited_once()
@@ -135,8 +130,10 @@ class TestSECGovEDGARClient:
         ciks = mock.create_autospec(CIKRepositoryInterface)
         ciks.find.return_value = None
 
-        async with ClientSession() as session:
-            sec = SECGovEDGARClient(session, URL(), ciks)
+        handler = mock.AsyncMock(spec=Handler)
+
+        async with sec_client_factory(ciks, handler) as sec:
             reports = await sec.get_reports(ticker="missing")
 
         assert reports is None
+        handler.assert_not_awaited()
