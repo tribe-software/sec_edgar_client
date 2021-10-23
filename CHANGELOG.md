@@ -11,4 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Local file Central Index Key repository
-- Assets and equity as balance components
+- `Assets` as balance component
+- `Equity` as balance component
+- `Revenue` as income component
+- `Gross profit` as income component
+- `Operating income` as income component
+- `Net income` as income component
+- `Research and development` as income component
+- `Selling and marketing` as income component
+- `General and administrative` as income component

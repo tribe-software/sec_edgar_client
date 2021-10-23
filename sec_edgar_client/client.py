@@ -7,7 +7,8 @@ from aiohttp import ClientSession
 from yarl import URL
 
 from .central_index_key import CIKRepositoryInterface
-from .parser import Reports, SECResponseParser
+from .entities import Reports
+from .parser import SECResponseParser
 
 __all__ = (
     "SECClient",
@@ -17,7 +18,7 @@ __all__ = (
 
 class UserAgent(UserString):
 
-    def __init__(self, company: str, user: str, email: str) -> None:
+    def __init__(self, *, company: str, user: str, email: str) -> None:
         super().__init__(
             f"{company} {user} <{email}>",
         )
@@ -37,9 +38,9 @@ class SECClient:
         cik = await self._CIKs.find(ticker)
         if cik is None:
             return None
-        return await self._get_reports(cik)
+        return await self._fetch_reports(cik)
 
-    async def _get_reports(
+    async def _fetch_reports(
         self,
         cik: str,
     ) -> Reports:
