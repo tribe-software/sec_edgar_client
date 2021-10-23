@@ -9,25 +9,23 @@ maintainers = [
     "Danila Korobkov <korobkov.danila.yurevich@gmail.com>",
 ]
 readme = "README.md"
-homepage = "https://git.ucb.local/projects/UCB/repos/ncb_gui_backend"
-repository = "https://git.ucb.local/projects/UCB/repos/ncb_gui_backend"
-documentation = "https://git.ucb.local/projects/UCB/repos/ncb_gui_backend/browse/README.md"
+homepage = "https://github.com/tribe-software"
+repository = "https://github.com/tribe-software/sec_gov_edgar_client"
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.10"
 aiohttp = "^3.7"
 ujson = "^4.2.0"
 
 [tool.poetry.dev-dependencies]
-add-trailing-comma = "^2.1"
+add-trailing-comma = "^2.2"
 autopep8 = "^1.5"
 bandit = "^1.7"
-cyclonedx-bom = "^0.4"
 factory-boy = "^3.2"
 flake8 = "^3.9"
 flake8-annotations-complexity = "^0.0.6"
 flake8-annotations-coverage = "^0.0.5"
-flake8-broken-line = "^0.3.0"
+flake8-broken-line = "^0.4.0"
 flake8-bugbear = "^21.4.3"
 flake8-class-attributes-order = "^0.1.2"
 flake8-cognitive-complexity = "^0.1.0"
@@ -35,7 +33,7 @@ flake8-comprehensions = "^3.5.0"
 flake8-expression-complexity = "^0.0.9"
 flake8-multiline-containers = "^0.0.18"
 flake8-pytest-style = "^1.5.0"
-flake8-quotes = "^3.2.0"
+flake8-quotes = "^3.3.1"
 isort = "^5.9"
 mypy = "^0.910"
 pylint = "^2.8"
@@ -43,7 +41,7 @@ pytest = "^6.2"
 pytest-cov = "^3.0"
 pytest-sugar = "^0.9"
 tqdm = "^4.61"
-types-ujson = "^0.1"
+types-ujson = "^4.2"
 
 [build-system]
 requires = ["poetry-core>=1.0"]

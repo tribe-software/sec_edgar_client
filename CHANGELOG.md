@@ -11,5 +11,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Local file Central Index Key repository
-- SEC.gov EDGAR client
-- Getting assets and stockholders equity as balance
+- Assets and equity as balance components

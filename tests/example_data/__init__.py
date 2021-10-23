@@ -12,6 +12,9 @@ __all__ = (
     "Z_RESPONSE_FILE",
     "Z_RESPONSE_DATA",
 
+    "MNST_RESPONSE_FILE",
+    "MNST_RESPONSE_DATA",
+
 )
 
 _CURRENT_DIR = Path(__file__).parent
@@ -25,3 +28,7 @@ with VEEV_RESPONSE_FILE.open(encoding="utf-8") as stream:
 Z_RESPONSE_FILE: Final = _CURRENT_DIR / "z_response.json"
 with Z_RESPONSE_FILE.open(encoding="utf-8") as stream:
     Z_RESPONSE_DATA: Final = ujson.load(stream)
+
+MNST_RESPONSE_FILE: Final = _CURRENT_DIR / "mnst_response.json"
+with MNST_RESPONSE_FILE.open(encoding="utf-8") as stream:
+    MNST_RESPONSE_DATA: Final = ujson.load(stream)
