@@ -10,7 +10,7 @@ from .central_index_key import CIKRepositoryInterface
 from .parser import Reports, SECResponseParser
 
 __all__ = (
-    "SECGovEDGARClient",
+    "SECClient",
     "UserAgent",
 )
 
@@ -24,7 +24,7 @@ class UserAgent(UserString):
 
 
 @attr.s(auto_attribs=True, slots=True, frozen=True)
-class SECGovEDGARClient:
+class SECClient:
     _session: ClientSession
     _url: URL
     _CIKs: CIKRepositoryInterface

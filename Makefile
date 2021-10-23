@@ -1,4 +1,4 @@
-PROJECT := sec_gov_edgar_client
+PROJECT := sec_edgar_client
 VERSION := $(shell git describe --tags `git rev-list --tags --max-count=1`)
 
 VENV := .venv

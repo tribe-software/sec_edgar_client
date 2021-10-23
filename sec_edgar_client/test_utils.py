@@ -6,7 +6,7 @@ from aiohttp.test_utils import RawTestServer
 from yarl import URL
 
 from .central_index_key import CIKRepositoryInterface
-from .client import SECGovEDGARClient, UserAgent
+from .client import SECClient, UserAgent
 
 __all__ = (
     "Handler",
@@ -38,4 +38,4 @@ async def sec_client_factory(
                 user="test_user",
                 email="user@gmail.com",
             )
-            yield SECGovEDGARClient(session, url, ciks, user_agent)
+            yield SECClient(session, url, ciks, user_agent)

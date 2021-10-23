@@ -8,12 +8,8 @@ from unittest import mock
 import pytest
 from aiohttp import web
 
-from sec_gov_edgar_client import (
-    BalanceSnapshot,
-    CIKRepositoryInterface,
-    Reports,
-)
-from sec_gov_edgar_client.test_utils import Handler, sec_client_factory
+from sec_edgar_client import BalanceSnapshot, CIKRepositoryInterface, Reports
+from sec_edgar_client.test_utils import Handler, sec_client_factory
 
 from .example_data import (
     MNST_RESPONSE_DATA,
@@ -94,7 +90,7 @@ MONSTER_BEVERAGE: Final = Reports(
 )
 
 
-class TestSECGovEDGARClient:
+class TestSECClient:
 
     @pytest.mark.parametrize(
         ("ticker", "cik", "sec_response", "expected_reports"),

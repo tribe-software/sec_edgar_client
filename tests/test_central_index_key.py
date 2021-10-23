@@ -2,7 +2,7 @@
 
 import pytest
 
-from sec_gov_edgar_client import LocalFileCIKRepository
+from sec_edgar_client import LocalFileCIKRepository
 
 from .example_data import TICKER_TO_CIK_MAPPING_FILE
 
