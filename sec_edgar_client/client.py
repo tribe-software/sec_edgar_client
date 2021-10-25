@@ -36,6 +36,7 @@ class SECClient:
         ticker: str,
     ) -> Optional[Reports]:
         cik = await self._CIKs.find(ticker)
+        print(cik)
         if cik is None:
             return None
         return await self._fetch_reports(cik)

@@ -22,8 +22,9 @@ async def main() -> None:
     )
     async with ClientSession() as session:
         sec = SECClient(session, url, ciks, user_agent)
-        reports = await sec.get_reports(ticker="VEEV")
-        print(reports)
+        for ticker in ("AMT", "MSFT", "AAPL", "Z", "MED", "MA", "V", "PYPL"):
+            reports = await sec.get_reports(ticker)
+            print(reports)
 
 if __name__ == "__main__":
     asyncio.run(main())

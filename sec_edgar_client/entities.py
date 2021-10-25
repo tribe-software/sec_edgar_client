@@ -10,23 +10,24 @@ __all__ = (
 )
 
 Year = int
+YearToValueMapping = Mapping[Year, int]
 
 
 @attr.s(auto_attribs=True, slots=True, frozen=True)
 class Balance:
-    assets: Mapping[Year, int]
-    equity: Mapping[Year, int]
+    assets: YearToValueMapping
+    equity: YearToValueMapping
 
 
 @attr.s(auto_attribs=True, slots=True, frozen=True)
 class Income:
-    revenue: Mapping[Year, int]
-    gross_profit: Mapping[Year, int]
-    operating_income: Mapping[Year, int]
-    net_income: Mapping[Year, int]
-    research_and_development: Mapping[Year, int]
-    selling_and_marketing: Mapping[Year, int]
-    general_and_administrative: Mapping[Year, int]
+    revenue: YearToValueMapping
+    gross_profit: YearToValueMapping
+    operating_income: YearToValueMapping
+    net_income: YearToValueMapping
+    research_and_development: YearToValueMapping
+    selling_and_marketing: YearToValueMapping
+    general_and_administrative: YearToValueMapping
 
 
 @attr.s(auto_attribs=True, slots=True, frozen=True)
